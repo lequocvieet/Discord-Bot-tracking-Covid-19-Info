@@ -16,34 +16,14 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
-@PropertySource("classpath:APIKey.properties")
 @RequestMapping("api/v1/country")
 public class CountryController {
 
     @Autowired
     CountryService countryService;
-
-    @Value("${x-rapidapi-key}")
-    private String apiKey;
-
-    @GetMapping("/demo")
+    @GetMapping("/get-all-country")
     public CountriesResponse getAllCountry() {
-
-        String url = "https://covid-193.p.rapidapi.com/countries";
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<?> entity= new HttpEntity<>(getHeader());
-        ResponseEntity<CountriesResponse> response=restTemplate.exchange(url, HttpMethod.GET,
-                entity,CountriesResponse.class);
-        //countryService.getAllCountry(response);
-
-        //System.out.println(response.getBody().toString());
-        return response.getBody();
-    }
-    private HttpHeaders getHeader(){
-        HttpHeaders header=new HttpHeaders();
-        header.setContentType(MediaType.APPLICATION_JSON);
-        header.add("x-rapidapi-key",apiKey);
-        return header;
+        return countryService.getAllCountry();
     }
 
 }
