@@ -9,4 +9,15 @@ public class Cases {
     private Integer critical;
     private Integer recovered;
     private Integer total;
+
+    @Override
+    public String toString() {
+        return "Cases: {" + " \n" +
+                "        New Cases = " + newCases + " \n" +
+                "        Active = " + active + " \n" +
+                "        Critical = " + critical + " \n" +
+                "        Recovered = " + recovered + " \n" +
+                "        Total = " + total + " " +
+                '}';
+    }
 }

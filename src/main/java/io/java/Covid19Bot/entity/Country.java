@@ -16,9 +16,12 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true) // any unknown property in json with no corresponding field will be ignored
 public class Country {
     private String continent;  // chau luc
-    private String countryName;
-    private Population population;
+    private String country;
+    private Integer population;
+    private Cases cases;
+    private Deaths deaths;
+    private Tests tests;
     private Date day;
-    private LocalDateTime time;
+    private String time;
 
 }

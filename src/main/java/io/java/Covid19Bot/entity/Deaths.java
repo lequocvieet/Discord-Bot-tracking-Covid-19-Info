@@ -6,4 +6,12 @@ import lombok.Data;
 public class Deaths {
     private Integer newDeath;
     private Integer total;
+
+    @Override
+    public String toString() {
+        return "Deaths: {" + " \n" +
+                "         New Death = " + newDeath + " \n" +
+                "         Total = " + total + " " +
+                '}';
+    }
 }
