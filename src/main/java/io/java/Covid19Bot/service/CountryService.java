@@ -1,6 +1,6 @@
 package io.java.Covid19Bot.service;
 
-import io.java.Covid19Bot.entity.CountriesResponse;
+import io.java.Covid19Bot.entityOld.CountriesResponse;
 import org.springframework.stereotype.Service;
 
 @Service

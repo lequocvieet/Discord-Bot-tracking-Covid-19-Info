@@ -1,8 +1,7 @@
-package io.java.Covid19Bot.entity;
+package io.java.Covid19Bot.entityOld;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.apache.catalina.LifecycleState;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
 package io.java.Covid19Bot.service.Impl;
 
 
-import io.java.Covid19Bot.entity.CountriesResponse;
+import io.java.Covid19Bot.entityOld.CountriesResponse;
 import io.java.Covid19Bot.service.CountryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.*;
