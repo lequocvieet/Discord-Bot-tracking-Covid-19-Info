@@ -1,5 +1,6 @@
 package io.java.Covid19Bot.service;
 
+
 import io.java.Covid19Bot.entity.StatisticsResponse;
 import org.springframework.stereotype.Service;
 
@@ -7,4 +8,5 @@ import org.springframework.stereotype.Service;
 public interface StatisticsService {
     StatisticsResponse getAllStatistics();
     StatisticsResponse getStatisticByCountryName(String countryName);
+    String getCodeFlagByName(String countryName);
 }

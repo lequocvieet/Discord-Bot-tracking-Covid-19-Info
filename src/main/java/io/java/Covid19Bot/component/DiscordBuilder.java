@@ -1,8 +1,12 @@
 package io.java.Covid19Bot.component;
 
 import io.java.Covid19Bot.listener.BotListener;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.MessageBuilder;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.MessageChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,7 +25,10 @@ public class DiscordBuilder {
 
     @PostConstruct
     public void buildDiscordBot() throws LoginException {
-        JDA jda = JDABuilder.createDefault(botToken).build();
-        jda.addEventListener(botListener);
+        JDA jda = JDABuilder.createDefault(botToken)
+                .addEventListeners(botListener)
+                .setActivity(Activity.playing("Vieet & Chung")).build();//initialized by create a JDA instance
+
+
     }
 }

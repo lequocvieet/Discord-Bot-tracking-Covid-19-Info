@@ -1,6 +1,8 @@
 package io.java.Covid19Bot.service.Impl;
 
+import io.java.Covid19Bot.entity.CountryFlagCode;
 import io.java.Covid19Bot.entity.StatisticsResponse;
+import io.java.Covid19Bot.repository.CountryFlagCodeRepo;
 import io.java.Covid19Bot.service.CountryService;
 import io.java.Covid19Bot.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class StatisticsServiceImpl implements StatisticsService {
     @Autowired
     private CountryService countryService;
 
+    @Autowired
+    private CountryFlagCodeRepo countryFlagRepo;
+
     @Override
     public StatisticsResponse getAllStatistics() {
         String url = "https://covid-193.p.rapidapi.com/statistics";
@@ -41,7 +46,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 .findFirst();
         if (validatedCountry.isPresent()) {
             System.out.println(validatedCountry.get() + " Is Country selected");    //Print Country Selected to Console
-            String url = "https://covid-193.p.rapidapi.com/statistics?country={country}";
+            String url = "https://covid-193.p.rapidapi.com/statistics?country="+"{"+ countryName +"}";
             RestTemplate restTemplate = new RestTemplate();
             HttpEntity<?> entity = new HttpEntity<>(getHeader());
             ResponseEntity<StatisticsResponse> response = restTemplate.exchange(url, HttpMethod.GET,
@@ -50,6 +55,12 @@ public class StatisticsServiceImpl implements StatisticsService {
         }
         return null;
     }
+
+    @Override
+    public String getCodeFlagByName(String countryName) {
+        return countryFlagRepo.findCodeFlagByName(countryName);
+    }
+
 
     private HttpHeaders getHeader() {
         HttpHeaders header = new HttpHeaders();
