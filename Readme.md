@@ -1,1 +1,4 @@
-A Discord Bot tracking covid-19 Information. Create By Java Spring Boot, Consumes an external API and to get Information and get Country Flag code in database.
+# Discord Bot tracking covid-19 Information
+A Discord Bot created By Java Spring Boot,
+Consumes an external API and to get Information of each Countries
+Get Countries Flag code in mysql-database.
