@@ -56,14 +56,14 @@ public class BotListener extends ListenerAdapter {
         String country = array[1];
 
         MessageChannel channel = event.getChannel();
+        long time = System.currentTimeMillis();
         StatisticsResponse statistic = statisticsService.getStatisticByCountryName(country);
         Country response = statistic.getResponse().get(0);
-        String code =statisticsService.getCodeFlagByName(response.getCountry());
-        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String code =statisticsService.getCodeFlagByName(country);
 
         EmbedBuilder embed=new EmbedBuilder();
         embed.setTitle("Covid 19 info for "+response.getCountry());
-        embed.setColor(Color.blue);
+        embed.setColor(Color.GRAY);
         embed.addField("Cases", "New cases: "+response.getCases().getNewCases()
                                      +"\nActive cases: " +response.getCases().getActive()
                                      +"\nCritical cases: " +response.getCases().getCritical()
@@ -72,8 +72,8 @@ public class BotListener extends ListenerAdapter {
         embed.addField("Deaths","New deaths: "+response.getDeaths().getNewDeath()+
                                 "\nTotal deaths: "+response.getDeaths().getTotal(),true);
         embed.setImage("https://flagcdn.com/w320/"+code+".jpg");
-        formatter.format(response.getDay());
-        embed.setFooter(formatter+"Request made by Viet vs Chung");
+        Long timeResponse= System.currentTimeMillis() - time;
+        embed.setFooter("Request made by Viet vs Chung And received response after "+timeResponse+" ms" );
         channel.sendMessage(embed.build()).queue();
     }
 }

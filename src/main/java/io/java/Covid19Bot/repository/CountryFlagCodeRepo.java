@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryFlagCodeRepo extends JpaRepository<CountryFlagCode,Integer> {
-    @Query(value="from CountryFlagCode x where x.countryName=?1")
+    @Query(value="select x.code from CountryFlagCode x where x.countryName=?1")
     String findCodeFlagByName(String countryName );
 }

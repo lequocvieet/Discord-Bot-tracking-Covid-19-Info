@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Data
-@Table(name = "CountryCode1")
+@Table(name = "countrycode1")
 public class CountryFlagCode {
 
     @Id
