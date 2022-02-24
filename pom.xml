@@ -30,11 +30,19 @@
             <artifactId>JDA</artifactId>
             <version>4.4.0_351</version>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -50,30 +50,42 @@ public class BotListener extends ListenerAdapter {
     }
 
     private void statistics(MessageReceivedEvent event) {    //!statistics + Tên Nước
+        EmbedBuilder embed = new EmbedBuilder();
         String message = event.getMessage().getContentDisplay();
         String array[] = message.split("\\s+");
-        System.out.println(array[1]);
+        // System.out.println(array[1]);
         String country = array[1];
 
         MessageChannel channel = event.getChannel();
         long time = System.currentTimeMillis();
         StatisticsResponse statistic = statisticsService.getStatisticByCountryName(country);
-        Country response = statistic.getResponse().get(0);
-        String code =statisticsService.getCodeFlagByName(country);
+        String code = statisticsService.getCodeFlagByName(country);
+        if (code.length() > 7 || statistic == null) {
+            embed.setImage("https://6dollarshirts.com/image/cache//data/designs/sorryyourewrong/sorryyourewrong-t-shirt-black-midnight-swatch-400x400.jpg");
+            embed.setTitle(code);
+            embed.setColor(Color.red);
+            Long timeResponse = System.currentTimeMillis() - time;
+            embed.setFooter("Request made by Viet vs Chung And received response after " + timeResponse + " ms");
+            channel.sendMessage(embed.build()).queue();
 
-        EmbedBuilder embed=new EmbedBuilder();
-        embed.setTitle("Covid 19 info for "+response.getCountry());
-        embed.setColor(Color.GRAY);
-        embed.addField("Cases", "New cases: "+response.getCases().getNewCases()
-                                     +"\nActive cases: " +response.getCases().getActive()
-                                     +"\nCritical cases: " +response.getCases().getCritical()
-                                     + "\nRecovered: "+response.getCases().getRecovered()
-                                     + "\nTotal cases: "+response.getCases().getTotal(),true);
-        embed.addField("Deaths","New deaths: "+response.getDeaths().getNewDeath()+
-                                "\nTotal deaths: "+response.getDeaths().getTotal(),true);
-        embed.setImage("https://flagcdn.com/w320/"+code+".jpg");
-        Long timeResponse= System.currentTimeMillis() - time;
-        embed.setFooter("Request made by Viet vs Chung And received response after "+timeResponse+" ms" );
-        channel.sendMessage(embed.build()).queue();
+
+        } else {
+            embed.setImage("https://flagcdn.com/w320/" + code + ".jpg");
+            Country response = statistic.getResponse().get(0);
+            embed.setTitle("Covid 19 info for " + response.getCountry());
+            embed.setColor(Color.GRAY);
+            embed.addField("Cases", "New cases: " + response.getCases().getNewCases()
+                    + "\nActive cases: " + response.getCases().getActive()
+                    + "\nCritical cases: " + response.getCases().getCritical()
+                    + "\nRecovered: " + response.getCases().getRecovered()
+                    + "\nTotal cases: " + response.getCases().getTotal(), true);
+            embed.addField("Deaths", "New deaths: " + response.getDeaths().getNewDeath() +
+                    "\nTotal deaths: " + response.getDeaths().getTotal(), true);
+
+
+            Long timeResponse = System.currentTimeMillis() - time;
+            embed.setFooter("Request made by Viet vs Chung And received response after " + timeResponse + " ms");
+            channel.sendMessage(embed.build()).queue();
+        }
     }
 }
