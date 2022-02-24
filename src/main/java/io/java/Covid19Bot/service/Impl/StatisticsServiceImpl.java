@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @PropertySource("classpath:APIKey.properties")
@@ -39,10 +39,12 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public StatisticsResponse getStatisticByCountryName(String countryName) {
+        // capitalize first letter
+        String countryName1 = countryName.substring(0, 1).toUpperCase() + countryName.substring(1);
         Optional<String> validatedCountry = countryService.getAllCountry()       //Get Country
                 .getResponse()
                 .stream()
-                .filter(countryBank -> countryBank.equals(countryName))
+                .filter(countryBank -> countryBank.equals(countryName1))
                 .findFirst();
         if (validatedCountry.isPresent()) {
             System.out.println(validatedCountry.get() + " Is Country selected");    //Print Country Selected to Console
@@ -58,10 +60,19 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public String getCodeFlagByName(String countryName) {
-        return countryFlagRepo.findCodeFlagByName(countryName);
-    }
+        ResourceBundle MESSAGE = ResourceBundle.getBundle("ErrorMessage");
 
+        // capitalize first letter
+        String output = countryName.substring(0, 1).toUpperCase() + countryName.substring(1);
+        List<String> countries= countryService.getAllCountry().getResponse();
+        for(int i=0;i< countries.size();i++){
+            if(output.equals(countries.get(i))){
+                return countryFlagRepo.findCodeFlagByName(output);
+            }
+        }
+        return MESSAGE.getString("ERRORMESSAGE");
 
+        }
     private HttpHeaders getHeader() {
         HttpHeaders header = new HttpHeaders();
         header.setContentType(MediaType.APPLICATION_JSON);
