@@ -17,22 +17,21 @@
 <nav class="navbar navbar-expand-lg bg-transparent">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <img th:src="@{/images/menuIcon.svg}" width="20px" height="20px" style="max-width: none !important;">
+
   </button>
-  <img th:src="@{/images/logo.svg}"  width="50" height="50" >
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#main">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#feature">Features</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Dashboard</a>
+        <a class="nav-link" href="https://rapidapi.com/api-sports/api/covid-193">API</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Subscription</a>
+        <a class="nav-link" href="https://www.youtube.com/channel/UCksT30vhLrqnIiNV_fR-70w/featured">Subscription</a>
       </li>
     </ul>
     <div class="nav-item dropdown">
@@ -41,23 +40,23 @@
         Documentation
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Commands</a>
-        <a class="dropdown-item" href="#">Tutorials</a>
+        <a class="dropdown-item" href="https://discord.com/developers/applications">Create Bot</a>
+        <a class="dropdown-item" href="https://github.com/DV8FromTheWorld/JDA">Tutorials</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Server settings</a>
       </div>
     </div>
     <div class="nav-item">
-      <a class="nav-link" href="#">About</a>
+      <a class="nav-link" href="https://github.com/lequocvieet/Discord-Bot-tracking-Covid-19-Info">About</a>
     </div>
     <button class="btn login-btn btn-outline-accent my-2 my-sm-0"
             style="font-size: 10px !important;font-family: poppins !important;">LOGIN</button>
   </div>
 </nav>
 <div class="heading">
-  <h1 class="display-5 title">It's time to use our Bot in your server.</h1>
-  <p class="subtitle">Bot is a multipurpose bot ready to skill up and boost up your Discord server<br />Also
-    features auto-moderation, administration, music and much more!</p>
+  <h1 id="main"class="display-5 title">It's time to use Corona Tracker Bot in your server.</h1>
+  <p class="subtitle">Corona Tracker is a multipurpose bot ready to skill up and boost up your Discord server<br />Also
+    features tracking covid 19 information, administration, view flags and much more!</p>
   <a class="btn btn-primary btn-lg" href="https://discord.com/" target="_blank" role="button">Get started</a>
   <a class="btn btn-secondary btn-lg"
      href="https://discord.com/login?redirect_to=%2Foauth2%2Fauthorize%3Fclient_id%3D916172124048228445%26permissions%3D8%26scope%3Dbot"
@@ -65,13 +64,13 @@
   <br /><br /><br /><br /><br /><br />
 </div>
 <div class="features">
-  <div class="title">Features of Bot</div>
+  <div id="feature" class="title">Features of Corona Tracker</div>
   <div class="subtitle">We provide you the best features in Bot!</div>
   <div class="cards">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Feature 1</h5>
-        <p class="card-text">Provide Info about covid19 in each country from external API.</p>
+        <p class="card-text">Provides Info about covid19 in each country from external API.</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
@@ -91,10 +90,9 @@
 
 <div class="footer">
   <div class="bot-footer">
-    <img type="image" src="/images/logo.svg" width="150"><br />
-    Copyright © [BotOwner] - 2020
+    Copyright © [BotOwner] - 2022
   </div><br />
-  <div class="nouridio">website designed by <a href="https://nouridio.com"> nourish</a></div>
+  <div class="nouridio">Have a nice day!</a></div>
 </div>
 </div>
 <script type="text/javascript"   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
